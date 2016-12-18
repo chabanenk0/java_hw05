@@ -46,6 +46,27 @@ public class Main
             List<Integer> falseList = partitionResult.get(false);
             System.out.println("False sublist:" + falseList);
 
+            int classesNumber = 3;
+            Map<Integer, List<Integer>> groupResultMap = CollectionUtils.groupBy(list, x -> x % classesNumber);
+            System.out.println("groupByResult (congruency classes, by division by 3 reminder):");
+            for(int i = 0; i < classesNumber; i++) {
+                System.out.println("class " + i + ", list:");
+                System.out.println(groupResultMap.get(i));
+            }
+
+            Map<Integer, Double> newMap = CollectionUtils.toMap(
+                    list,
+                    x -> x % classesNumber, // classes (keys for map)
+                    y -> (double) y / 2, // values for map)
+                    (y1, y2) -> y1 + y2 // aggregate function
+            );
+
+            System.out.println("Map Result (congruency classes, by division by 3 reminder):");
+            for(int i = 0; i < classesNumber; i++) {
+                System.out.println("class " + i + ", list:");
+                System.out.println(newMap.get(i));
+            }
+
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {

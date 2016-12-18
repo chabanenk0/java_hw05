@@ -140,8 +140,23 @@ public class CollectionUtils {
 
 
     public static <T, K> Map<K, List<T>> groupBy(List<T> elements, Function<T, K> classifier) {
-        //TODO Implement me
-        return null;
+        Map<K, List<T>> result = new HashMap<K, List<T>>();
+
+        for(T element: elements) {
+            K group = classifier.apply(element);
+            List<T> groupList;
+
+            if (!result.containsKey(group)) {
+                groupList = new LinkedList<T>();
+                result.put(group, groupList);
+            } else {
+                groupList = result.get(group);
+            }
+
+            groupList.add(element);
+        }
+
+        return result;
     }
 
 
@@ -149,7 +164,22 @@ public class CollectionUtils {
                                             Function<T, K> keyFunction,
                                             Function<T, U> valueFunction,
                                             BinaryOperator<U> mergeFunction) {
-        //TODO Implement me
-        return null;
+        Map<K, U> result = new HashMap<K, U>();
+
+        for(T element: elements) {
+            K key = keyFunction.apply(element);
+            U value = valueFunction.apply(element);
+
+            U newValue = null;
+            if (result.containsKey(key)) {
+                U oldValue = result.get(key);
+                newValue = mergeFunction.apply(oldValue, value);
+            } else {
+                newValue = value;
+            }
+
+            result.put(key, newValue);
+        }
+        return result;
     }
 }
