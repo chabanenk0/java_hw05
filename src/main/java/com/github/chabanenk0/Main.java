@@ -23,6 +23,8 @@ public class Main
             System.out.println("All match (all positive): " + CollectionUtils.allMatch(list, x -> x > 0));
             System.out.println("All match (all even): " + CollectionUtils.allMatch(list, x -> x % 2 == 0));
             System.out.println("map (divide by 2): " + CollectionUtils.map(list, (x) -> (double) x / 2));
+            System.out.println("max: " + CollectionUtils.max(list, (x, y) -> x - y));
+            System.out.println("min: " + CollectionUtils.min(list, (x, y) -> x - y));
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {

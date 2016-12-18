@@ -69,14 +69,24 @@ public class CollectionUtils {
 
 
     public static <E> Optional<E> max(List<E> elements, Comparator<E> comparator) {
-        //TODO Implement me
-        return null;
+        E max = elements.iterator().next();
+        for(E element: elements) {
+            if (comparator.compare(element, max) > 0) {
+                max = element;
+            }
+        }
+        return Optional.of(max);
     }
 
 
     public static <E> Optional<E> min(List<E> elements, Comparator<E> comparator) {
-        //TODO Implement me
-        return null;
+        E min = elements.iterator().next();
+        for(E element: elements) {
+            if (comparator.compare(element, min) < 0) {
+                min = element;
+            }
+        }
+        return Optional.of(min);
     }
 
 
