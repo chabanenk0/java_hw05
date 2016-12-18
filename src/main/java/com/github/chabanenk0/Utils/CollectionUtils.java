@@ -90,9 +90,15 @@ public class CollectionUtils {
     }
 
 
-    public static <E> List<E> distinct(List<E> elements) {
-        //TODO Implement me
-        return null;
+    public static <E> List<E> distinct(List<E> elements) throws IllegalAccessException, InstantiationException {
+        List result = elements.getClass().newInstance();
+        for(E element: elements) {
+            if (!result.contains(element)) {
+                result.add(element);
+            }
+        }
+
+        return result;
     }
 
 

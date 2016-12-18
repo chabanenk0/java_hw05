@@ -17,6 +17,7 @@ public class Main
         List<Integer> list = new LinkedList<Integer>(Arrays.asList(array));
         try {
             List<Integer> filteredList = CollectionUtils.filter(list, x -> x < 0);
+            System.out.println("Initial list: " + list.toString());
             System.out.println("Filtered (only even): " + filteredList.toString());
             System.out.println("Any match (any even number): " + CollectionUtils.anyMatch(list, x -> x % 2 == 0));
             System.out.println("Any match (any negative): " + CollectionUtils.anyMatch(list, x -> x < 0));
@@ -25,6 +26,12 @@ public class Main
             System.out.println("map (divide by 2): " + CollectionUtils.map(list, (x) -> (double) x / 2));
             System.out.println("max: " + CollectionUtils.max(list, (x, y) -> x - y));
             System.out.println("min: " + CollectionUtils.min(list, (x, y) -> x - y));
+
+            Integer[] array2 = new Integer[]{1, 1, 2, 2, 3, 3, 7, 8};
+            List<Integer> list2 = new LinkedList<Integer>(Arrays.asList(array2));
+            System.out.println("Initial list2: " + list2.toString());
+            System.out.println("Distinct: " + CollectionUtils.distinct(list2));
+
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
