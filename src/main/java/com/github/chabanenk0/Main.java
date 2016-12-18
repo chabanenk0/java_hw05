@@ -20,6 +20,8 @@ public class Main
             System.out.println("Filtered (only even): " + filteredList.toString());
             System.out.println("Any match (any even number): " + CollectionUtils.anyMatch(list, x -> x % 2 == 0));
             System.out.println("Any match (any negative): " + CollectionUtils.anyMatch(list, x -> x < 0));
+            System.out.println("All match (all positive): " + CollectionUtils.allMatch(list, x -> x > 0));
+            System.out.println("All match (all even): " + CollectionUtils.allMatch(list, x -> x % 2 == 0));
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {

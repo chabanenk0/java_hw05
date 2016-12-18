@@ -39,8 +39,13 @@ public class CollectionUtils {
 
 
     public static <E> boolean allMatch(List<E> elements, Predicate<E> predicate) {
-        //TODO Implement me
-        return false;
+        for( E element: elements) {
+            if (!predicate.test(element)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 
