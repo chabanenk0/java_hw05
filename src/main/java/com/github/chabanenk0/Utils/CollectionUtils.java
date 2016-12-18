@@ -1,5 +1,7 @@
 package com.github.chabanenk0.Utils;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -50,14 +52,19 @@ public class CollectionUtils {
 
 
     public static <E> boolean noneMatch(List<E> elements, Predicate<E> predicate) {
-        //TODO Implement me
-        return false;
+        return !CollectionUtils.anyMatch(elements, predicate);
     }
 
 
-    public static <T, R> List<R> map(List<T> elements, Function<T, R> mappingFunction) {
-        //TODO Implement me
-        return null;
+    public static <T, R> List<R> map(List<T> elements, Function<T, R> mappingFunction) throws IllegalAccessException, InstantiationException {
+        // @todo investigate how to determine the list type of 'elements'
+        // and how to create the new list with the same list type
+        List result = elements.getClass().newInstance();
+        for(T element: elements) {
+            result.add(mappingFunction.apply(element));
+        }
+        return result;
+
     }
 
 
