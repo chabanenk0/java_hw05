@@ -31,6 +31,10 @@ public class Main
             List<Integer> list2 = new LinkedList<Integer>(Arrays.asList(array2));
             System.out.println("Initial list2: " + list2.toString());
             System.out.println("Distinct: " + CollectionUtils.distinct(list2));
+            System.out.println("forEach:");
+            CollectionUtils.forEach(list, x -> {
+                System.out.print("element: "+  x.toString() + ", ");
+            });
 
         } catch (IllegalAccessException e) {
             e.printStackTrace();

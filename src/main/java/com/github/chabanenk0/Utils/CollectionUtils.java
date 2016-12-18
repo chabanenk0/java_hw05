@@ -103,7 +103,9 @@ public class CollectionUtils {
 
 
     public static <E> void forEach(List<E> elements, Consumer<E> consumer) {
-        //TODO Implement me
+        for(E element: elements) {
+            consumer.accept(element);
+        }
     }
 
 
