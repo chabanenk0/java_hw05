@@ -2,10 +2,7 @@ package com.github.chabanenk0.Utils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -110,8 +107,16 @@ public class CollectionUtils {
 
 
     public static <E> Optional<E> reduce(List<E> elements, BinaryOperator<E> accumulator) {
-        //TODO Implement me
-        return null;
+        E result = null;
+        for(E element: elements) {
+            if (result == null) {
+                result = element;
+                continue;
+            }
+            result = accumulator.apply(result, element);
+        }
+
+        return Optional.of(result);
     }
 
 
@@ -122,8 +127,15 @@ public class CollectionUtils {
 
 
     public static <E> Map<Boolean, List<E>> partitionBy(List<E> elements, Predicate<E> predicate) {
-        //TODO Implement me
-        return null;
+        Map<Boolean, List<E>> result = new HashMap<Boolean, List<E>>();
+        result.put(true, new LinkedList<E>());
+        result.put(false, new LinkedList<E>());
+
+        for(E element: elements) {
+            boolean group = predicate.test(element);
+            result.get(group).add(element);
+        }
+        return result;
     }
 
 

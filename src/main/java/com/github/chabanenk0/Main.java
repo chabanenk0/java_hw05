@@ -5,6 +5,7 @@ import com.github.chabanenk0.Utils.CollectionUtils;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by dmitry on 08.12.16.
@@ -31,10 +32,19 @@ public class Main
             List<Integer> list2 = new LinkedList<Integer>(Arrays.asList(array2));
             System.out.println("Initial list2: " + list2.toString());
             System.out.println("Distinct: " + CollectionUtils.distinct(list2));
+
             System.out.println("forEach:");
             CollectionUtils.forEach(list, x -> {
                 System.out.print("element: "+  x.toString() + ", ");
             });
+
+            System.out.println("Reduce (sum):" + CollectionUtils.reduce(list, (x, y) -> x + y));
+            System.out.println("Partition test (odd or even):");
+            Map<Boolean, List<Integer>> partitionResult = CollectionUtils.partitionBy(list, x -> x % 2 == 0);
+            List<Integer> trueList = partitionResult.get(true);
+            System.out.println("True sublist:" + trueList);
+            List<Integer> falseList = partitionResult.get(false);
+            System.out.println("False sublist:" + falseList);
 
         } catch (IllegalAccessException e) {
             e.printStackTrace();
