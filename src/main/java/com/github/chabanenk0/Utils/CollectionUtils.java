@@ -66,6 +66,9 @@ public class CollectionUtils {
 
 
     public static <E> Optional<E> max(List<E> elements, Comparator<E> comparator) {
+        if (elements.isEmpty()) {
+            return Optional.empty();
+        }
         E max = elements.iterator().next();
         for(E element: elements) {
             if (comparator.compare(element, max) > 0) {
@@ -77,6 +80,9 @@ public class CollectionUtils {
 
 
     public static <E> Optional<E> min(List<E> elements, Comparator<E> comparator) {
+        if (elements.isEmpty()) {
+            return Optional.empty();
+        }
         E min = elements.iterator().next();
         for(E element: elements) {
             if (comparator.compare(element, min) < 0) {
@@ -107,6 +113,9 @@ public class CollectionUtils {
 
 
     public static <E> Optional<E> reduce(List<E> elements, BinaryOperator<E> accumulator) {
+        if (elements.isEmpty()) {
+            return Optional.empty();
+        }
         E result = null;
         for(E element: elements) {
             if (result == null) {

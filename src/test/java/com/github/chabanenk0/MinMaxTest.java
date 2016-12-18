@@ -21,6 +21,14 @@ public class MinMaxTest
 
         return list;
     }
+    private List<Integer> getEmptyList()
+    {
+        Integer[] array = new Integer[]{};
+        List<Integer> list = new LinkedList<Integer>(Arrays.asList(array));
+
+        return list;
+    }
+
     @Test
     public void maxTest()
     {
@@ -35,4 +43,19 @@ public class MinMaxTest
         int result = CollectionUtils.min(list, (x, y) -> x - y).orElse(-1);
         assertEquals(1, result);
     }
+    @Test
+    public void maxEmptyTest()
+    {
+        List<Integer> list = this.getEmptyList();
+        int result = CollectionUtils.max(list, (x, y) -> x - y).orElse(-1);
+        assertEquals(-1, result);
+    }
+    @Test
+    public void minEmptyTest()
+    {
+        List<Integer> list = this.getEmptyList();
+        int result = CollectionUtils.min(list, (x, y) -> x - y).orElse(-1);
+        assertEquals(-1, result);
+    }
+
 }
