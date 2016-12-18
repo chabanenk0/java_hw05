@@ -17,7 +17,9 @@ public class Main
         List<Integer> list = new LinkedList<Integer>(Arrays.asList(array));
         try {
             List<Integer> filteredList = CollectionUtils.filter(list, x -> x < 0);
-            System.out.println(filteredList.toString());
+            System.out.println("Filtered (only even): " + filteredList.toString());
+            System.out.println("Any match (any even number): " + CollectionUtils.anyMatch(list, x -> x % 2 == 0));
+            System.out.println("Any match (any negative): " + CollectionUtils.anyMatch(list, x -> x < 0));
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
